@@ -8,7 +8,7 @@
         </h3>
         <p class="baloo mt-3">{{$msg}}</p>
         <div class="buttons">
-            @include('layouts.partials.revert')
+{{--            @include('layouts.partials.revert')--}}
         </div>
     </div>
 
