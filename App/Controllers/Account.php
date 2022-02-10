@@ -48,6 +48,17 @@ class Account extends Authenticated
 
     }
 
+    public function addInfoAction(){
+
+        $user = Auth::getUser();
+        View::renderBlade('account.edit_info',[
+            'religions'=>UserVariables::fetch('religions'),
+            'languages'=>UserVariables::fetch('languages'),
+            'states'=>UserVariables::fetch('states'),
+        ]);
+
+    }
+
     /**
      * Edit User Profile
      */

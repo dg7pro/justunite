@@ -26,7 +26,7 @@ class Register extends Controller
 
         //$fors = UserVariables::fetch('fors');
 
-        View::renderBlade('/register/index');
+        View::renderBlade('register.form');
 
     }
 
@@ -65,7 +65,10 @@ class Register extends Controller
 //
 //            $this->redirect('/sriganesh/verify-mobile');
 
-            $this->successAction();
+            Auth::login($user,true);
+
+            $this->redirect('/account/add-info');
+            //$this->successAction();
 
         }else{
 
@@ -82,7 +85,8 @@ class Register extends Controller
      * Shows success page
      */
     public function successAction(){
-        View::renderBlade('register/success');
+        echo "Member registered successfully";
+        //View::renderBlade('register/success');
     }
 
     /**

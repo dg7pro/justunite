@@ -30,7 +30,7 @@ class Login extends Controller
         //Flash::addMessage('Enter your account credentials to login...', Flash::WARNING);
         //Flash::addMessage('Please login to continue...', Flash::WARNING);
 
-        View::renderBlade('login/index');
+        View::renderBlade('login/form');
 
     }
 

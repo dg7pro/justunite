@@ -66,18 +66,20 @@ class User extends Model
             $hashed_token = $token->getHash();             // Saved in users table
             $this->activation_token = $token->getValue();  // To be send in email
 
-            $sql = 'INSERT INTO users (full_name, mobile, email, password_hash, gender, activation_hash)
-                    VALUES (:full_name, :mobile, :email, :password_hash, :gender, :activation_hash)';
+            $m_type = strtolower($this->membership);
+
+            $sql = 'INSERT INTO users (full_name, email, password_hash, activation_hash, member_type)
+                    VALUES (:full_name, :email, :password_hash, :activation_hash, :member_type)';
 
             $db = static::getDB();
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(':full_name', $this->name, PDO::PARAM_STR);
-            $stmt->bindValue(':mobile', $this->mobile, PDO::PARAM_STR);
+            //$stmt->bindValue(':mobile', $this->mobile, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
-            $stmt->bindValue(':gender', $this->gender, PDO::PARAM_INT);
             $stmt->bindValue(':activation_hash', $hashed_token, PDO::PARAM_STR);
+            $stmt->bindValue(':member_type', $this->membership, PDO::PARAM_STR);
 
 
             $result = $stmt->execute();
@@ -98,14 +100,17 @@ class User extends Model
      */
     public function validate(){
 
-        // cFor
-        if($this->cFor==''){
-            $this->errors[] = 'For is required';
+        // membership
+        if($this->membership==''){
+            $this->errors[] = 'Please select membership type';
         }
 
-        // gender
-        if($this->gender==''){
-            $this->errors[] = 'Gender is required';
+        // full name
+        if($this->name==''){
+            $this->errors[] = 'Your name is required';
+        }
+        if (!preg_match("/^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*$/",$this->name)) {
+            $this->errors[] = 'Your name looks Invalid';
         }
 
         // email address
@@ -116,31 +121,23 @@ class User extends Model
             $this->errors[] = 'Email already exists';
         }
 
-        // mobile address
-        if (!preg_match("/^[6-9]\d{9}$/",$this->mobile)) {
-            $this->errors[] = 'Invalid mobile number';
+        // mobile number
+        if(isset($this->mobile)){
+            if (!preg_match("/^[6-9]\d{9}$/",$this->mobile)) {
+                $this->errors[] = 'Invalid mobile number';
+            }
+            if($this->mobileExists($this->mobile)){
+                $this->errors[] = 'Mobile already exists';
+            }
         }
 
-        if($this->mobileExists($this->mobile)){
-            $this->errors[] = 'Mobile already exists';
-        }
 
+        // password
         $pattern = '/^[0-9A-Za-z!@#$%^&*?]{8,32}$/';
         if (preg_match($pattern, $this->password) == 0) {
             $this->errors[] = 'Minimum 8 digits alphabet, number and special character !@#$%^&*? ';
         }
 
-//        if (strlen($this->password) < 5) {
-//            $this->errors[] = 'Please enter at least 6 characters for the password';
-//        }
-//
-//        if (preg_match('/.*[a-z]+.*/i', $this->password) == 0) {
-//            $this->errors[] = 'Password needs at least one letter';
-//        }
-//
-//        if (preg_match('/.*\d+.*/i', $this->password) == 0) {
-//            $this->errors[] = 'Password needs at least one number';
-//        }
     }
 
     /**

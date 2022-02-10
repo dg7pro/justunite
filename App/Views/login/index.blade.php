@@ -7,7 +7,7 @@
 
         @include('layouts.partials.alert')
 
-        <h1 class="large text-green">
+        <h1 class="large text-green mt-5">
             Sign In
         </h1>
         <p class="lead"><i class="fas fa-user"> </i> Sign Into Your Account</p>

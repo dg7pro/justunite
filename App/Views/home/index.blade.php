@@ -544,7 +544,7 @@
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="member d-flex align-items-start">
-                            <div class="pic"><img src="assets/img/team/leader-1.jpg" class="img-fluid" alt=""></div>
+                            <div class="pic"><img src="assets/img/team/sri_brijesh_rai.jpg" class="img-fluid" alt=""></div>
                             <div class="member-info">
                                 <h4>{{$temple['leader1_name']}}</h4>
                                 <span>{{$temple['leader1_title']}}</span>

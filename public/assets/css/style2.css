@@ -2181,3 +2181,25 @@ body {
   #footer .credits a {
     color: #f6b024;
   }
+
+/*--------------------------------------------------------------
+# Login and Register form
+--------------------------------------------------------------*/
+
+
+
+.ju-form{
+  margin-top: 125px;
+
+
+}
+
+.remember-me{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+
+}
+
