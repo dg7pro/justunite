@@ -66,10 +66,10 @@ class User extends Model
             $hashed_token = $token->getHash();             // Saved in users table
             $this->activation_token = $token->getValue();  // To be send in email
 
-            $m_type = strtolower($this->membership);
+            //$m_type = strtolower($this->membership);
 
-            $sql = 'INSERT INTO users (full_name, email, password_hash, activation_hash, member_type)
-                    VALUES (:full_name, :email, :password_hash, :activation_hash, :member_type)';
+            $sql = 'INSERT INTO users (full_name, email, password_hash, activation_hash, type)
+                    VALUES (:full_name, :email, :password_hash, :activation_hash, :type)';
 
             $db = static::getDB();
             $stmt = $db->prepare($sql);
@@ -79,7 +79,7 @@ class User extends Model
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
             $stmt->bindValue(':activation_hash', $hashed_token, PDO::PARAM_STR);
-            $stmt->bindValue(':member_type', $this->membership, PDO::PARAM_STR);
+            $stmt->bindValue(':type', $this->membership, PDO::PARAM_STR);
 
 
             $result = $stmt->execute();
@@ -139,6 +139,80 @@ class User extends Model
         }
 
     }
+
+    /**
+     * @param $data
+     * @return bool
+     */
+    public function saveMemberInfo($data): bool
+    {
+
+        foreach ($data as $key => $value){
+            $this->$key=$value;
+        }
+
+        $this->newValidateMobile();
+        $this->newValidateWhatsapp();
+
+        if(empty($this->errors)){
+
+            $sql = "UPDATE users SET 
+                gender= :gender,
+                dob= :dob,
+                religion= :religion,            
+                language= :language,
+                mobile= :mobile,
+                whatsapp= :whatsapp,
+                country= :country, 
+                state= :state,
+                district= :district,
+                constituency= :constituency
+                WHERE id= :id";
+
+            $pdo = Model::getDB();
+            $stmt=$pdo->prepare($sql);
+            return $stmt->execute([
+                ':gender'=>$this->gender,
+                ':dob'=>$this->dob,
+                ':religion'=>$this->religion,
+                ':language'=>$this->language,
+                ':mobile'=>$this->mobile,
+                ':whatsapp'=>$this->whatsapp,
+                ':country'=>'India',
+                ':state'=>$this->state,
+                ':district'=>$this->district,
+                ':constituency'=>$this->constituency,
+                ':id'=>$this->id
+            ]);
+        }
+        return false;
+    }
+
+    /**
+     * Validate name
+     */
+    public function newValidateWhatsapp(){
+
+        // whatsapp address
+        if (!preg_match("/^[0-9 ()+-]+$/",$this->whatsapp)) {
+            $this->errors[] = 'Whatsapp number looks invalid';
+        }
+
+    }
+
+    /**
+     * Validate name
+     */
+    public function newValidateMobile(){
+
+        // whatsapp address
+        if (!preg_match("/^[0-9 ()+-]+$/",$this->mobile)) {
+            $this->errors[] = 'Mobile number looks invalid';
+        }
+
+    }
+
+
 
     /**
      * Validate Mobile
@@ -795,7 +869,7 @@ class User extends Model
      */
     protected function sendPasswordResetEmail()
     {
-        $url = 'https://' . $_SERVER['HTTP_HOST'] . '/password/reset/' . $this->password_reset_token;
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . '/password/reset/' . $this->password_reset_token;
 
         $text = View::getTemplate('password/reset_email.txt', ['url' => $url]);
         $html = View::getTemplate('password/reset_email.html', ['url' => $url]);

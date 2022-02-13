@@ -51,13 +51,60 @@ class Account extends Authenticated
     public function addInfoAction(){
 
         $user = Auth::getUser();
-        View::renderBlade('account.edit_info',[
+
+        if(!empty($user->mobile)){
+            $this->redirect('/account/my-profile');
+        }
+
+        $genders = ['Male','Female','Other'];
+        $arr = isset($_GET['arr'])?json_decode($_GET['arr'],true):'';
+
+        View::renderBlade('account.add_info',[
             'religions'=>UserVariables::fetch('religions'),
             'languages'=>UserVariables::fetch('languages'),
             'states'=>UserVariables::fetch('states'),
+            'genders'=>$genders,
+            'arr'=>$arr
         ]);
 
     }
+
+    public function saveInfoAction(){
+
+        $csrf = new Csrf($_POST['token']);
+        if(!$csrf->validate()){
+            unset($_SESSION["csrf_token"]);
+            die("CSRF token validation failed");
+        }
+
+        if (isset($_POST['save-info-submit'])) {
+
+            $user = Auth::getUser();
+            $result = $user->saveMemberInfo($_POST);
+
+            if($result){
+
+                $this->redirect('/account/confirm');
+
+            }else{
+
+                $arr = json_encode($_POST);
+                foreach ($user->errors as $error) {
+                    Flash::addMessage($error, 'danger');
+                }
+                $this->redirect('/account/add-info?arr='.$arr);
+            }
+        }
+
+    }
+
+    public function confirmAction(){
+
+        View::renderBlade('account.confirm');
+
+    }
+
+
 
     /**
      * Edit User Profile

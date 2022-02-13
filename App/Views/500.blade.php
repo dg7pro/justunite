@@ -1,24 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.inner')
 
 @section('content')
 
-    <div class="main">
-        <h3 class="text-red">
-           500 Internal server error
-        </h3>
-        <p class="baloo mt-3">{{$msg}}</p>
-        <div class="buttons">
-{{--            @include('layouts.partials.revert')--}}
+    <section class="blank-page">
+        <div class="container">
+
+            <div class="ju-box-error">
+                <div class="text-center">
+                    <h2> 500 Internal server error</h2>
+                    <p>{{$msg}} </p>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
 
 @endsection
 
-@section('js')
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-@endsection
 

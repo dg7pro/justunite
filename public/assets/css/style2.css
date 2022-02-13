@@ -2186,20 +2186,39 @@ body {
 # Login and Register form
 --------------------------------------------------------------*/
 
-
-
 .ju-form{
   margin-top: 125px;
-
-
 }
 
 .remember-me{
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-
 }
 
+/*--------------------------------------------------------------
+# Error & Extra Pages
+--------------------------------------------------------------*/
+
+.blank-page{
+  height: 100vh;
+}
+
+.ju-box-error{
+  margin-top: 125px;
+  display: flex;
+  justify-content: center;
+}
+
+.ju-box-confirm{
+  /*background: #f3e5e4;*/
+  background: #98d7ae;
+  margin-top: 125px;
+  display: flex;
+  justify-content: center;
+  /*max-width: 300px;*/
+  border: 1px solid #b6bebe;
+  padding: 10px;
+  border-radius: 5px;
+
+}

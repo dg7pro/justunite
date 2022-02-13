@@ -47,26 +47,11 @@ class Register extends Controller
         if($user->save()){
 
             // Send email
-            //$user->sendActivationEmail();
-
-            // Notify user
-//            $notification = new Notification();
-//            $notification->informAboutAccountCreation($user->id);
-
-
-            // Redirect success
-            //$this->redirect('/register/success');
-//            $_SESSION['otp_user_id']=$user->id;
-//            $_SESSION['mobile']=$user->mobile;
-
-            // Send mobile otp message
-            //$_SESSION['otp']=$user->otp;
-//            Sms::sendOtp($user->mobile,$user->otp);
-//
-//            $this->redirect('/sriganesh/verify-mobile');
+            $user->sendActivationEmail();
 
             Auth::login($user,true);
 
+            Flash::addMessage('Welcome to Just Unite, Please provide some more basic details','success');
             $this->redirect('/account/add-info');
             //$this->successAction();
 

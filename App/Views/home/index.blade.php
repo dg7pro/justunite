@@ -270,7 +270,7 @@
                 <div class="row">
 
                     <div class="col-lg-5 align-items-stretch position-relative video-box" style='background-image: url("/assets/img/interview.jpg");' data-aos="fade-right">
-                        <a href="" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+                        <a href="javascript:void(0)" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
                     </div>
 
                     <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch" data-aos="fade-left">
@@ -338,42 +338,42 @@
                         <div class="icon-box">
                             <!-- <i class="bi bi-card-checklist"></i> -->
                             <i class="bi bi-people pinkc"></i>
-                            <h4><a href="#">{{$temple['major1']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major1']}}</a></h4>
                             <p>{{$temple['major1_explain']}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon-box">
                             <i class="bi bi-bar-chart bluec"></i>
-                            <h4><a href="#">{{$temple['major2']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major2']}}</a></h4>
                             <p>{{$temple['major2_explain']}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="300">
                         <div class="icon-box">
                             <i class="bi bi-graph-up-arrow yellowc"></i>
-                            <h4><a href="#">{{$temple['major3']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major3']}}</a></h4>
                             <p>{{$temple['major3_explain']}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="400">
                         <div class="icon-box">
                             <i class="bi bi-moon-stars orangec"></i>
-                            <h4><a href="#">{{$temple['major4']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major4']}}</a></h4>
                             <p>{{$temple['major4_explain']}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="500">
                         <div class="icon-box">
                             <i class="bi bi-calendar4-week greenc"></i>
-                            <h4><a href="#">{{$temple['major5']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major5']}}</a></h4>
                             <p>{{$temple['major5_explain']}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="600">
                         <div class="icon-box">
                             <i class="bi bi-briefcase violetc"></i>
-                            <h4><a href="#">{{$temple['major6']}}</a></h4>
+                            <h4><a href="javascript:void(0)">{{$temple['major6']}}</a></h4>
                             <p>{{$temple['major6_explain']}}</p>
                         </div>
                     </div>
@@ -633,7 +633,7 @@
                             {{--<p>Volunters are the hands of the organization. Without Volunteers the life would be impossible. </p>
                             <p>In return they get tremendous amount of social experience and working certificate too.</p>--}}
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -653,7 +653,7 @@
 {{--                            <p>Core members are the once who actively participate in the decesion making process of the organization.</p>--}}
 {{--                            <p> Together they constitute Core Committee which decides the course of action to be taken and thus function as brain </p>--}}
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -673,7 +673,7 @@
 {{--                            <p>Observers are the simple members. They support us with their knowledge, experience, and valuable feedback</p>--}}
 {{--                            <p>Generally the decession is put before them and voting is conducted before taking any important decesion </p>--}}
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -691,7 +691,7 @@
                           <li>Massa ultricies mi</li>
                         </ul>
                         <div class="btn-wrap">
-                          <a href="#" class="btn-buy">Buy Now</a>
+                          <a href="javascript:void(0)" class="btn-buy">Buy Now</a>
                         </div>
                       </div>
                     </div> -->
@@ -840,6 +840,7 @@
 {{--        $('#exampleModal').modal('show');--}}
 {{--        @endif--}}
             $(document).ready(function(){
+
                 var flag = '{{$slm}}';
                 if(flag==true){
                     setTimeout(function() {

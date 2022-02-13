@@ -28,7 +28,7 @@ class Mail
         $mg = Mailgun::create($_ENV['MAILGUN_API_KEY'], 'https://api.mailgun.net/v3/mg.mailgun.org');
         $domain = $_ENV['MAILGUN_DOMAIN'];
 
-        $mg->messages()->send($domain,['from'    => 'JuMatrimony <admin@jumatrimony.com>',
+        $mg->messages()->send($domain,['from'    => 'Just Unite <admin@justunite.org>',
             'to'      => $to,
             'subject' => $subject,
             'text'    => $text,

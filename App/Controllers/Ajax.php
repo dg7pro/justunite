@@ -5,6 +5,8 @@ namespace App\Controllers;
 
 
 use App\Auth;
+use App\Models\Constituency;
+use App\Models\District;
 use App\Models\Notification;
 use App\Models\RecordContact;
 use Core\Controller;
@@ -167,6 +169,64 @@ class Ajax extends Controller
             $json_data = ['flag'=>$flag, 'msg'=>$msg];
             echo json_encode($json_data);
             exit();
+        }
+    }
+
+    /**
+     *  Select district for any state
+     */
+    public function selectDistrict(){
+
+        if(isset($_POST['state_id'])){
+
+            $sid = $_POST['state_id'];
+            //echo $sid;
+
+            $districts = District::fetchAll($sid);
+            $num = count($districts);
+
+            // Generate HTML of city options list
+            if($num > 0){
+                $opt = '<option value="">Select Districts ...</option>';
+                foreach ($districts as $district){
+                    $opt .= '<option value="'.$district['text'].'" >'.$district['text'].'</option>';
+                }
+                $flag = true;
+            }else{
+                $opt = '<option value="">District not available</option>';
+                $flag = false;
+            }
+            $re = ['flag'=>$flag,'opt'=>$opt];
+            echo json_encode($re);
+        }
+    }
+
+    /**
+     *  Select district for any state
+     */
+    public function selectConstituency(){
+
+        if(isset($_POST['state_id'])){
+
+            $sid = $_POST['state_id'];
+            //echo $sid;
+
+            $constituencies = Constituency::fetchAll($sid);
+            $num = count($constituencies);
+
+            // Generate HTML of city options list
+            if($num > 0){
+                $opt = '<option value="">Select Constituency ...</option>';
+                foreach ($constituencies as $constituency){
+                    $opt .= '<option value="'.$constituency['pc_name'].'" >'.$constituency['pc_name'].'</option>';
+                }
+                $flag = true;
+            }else{
+                $opt = '<option value="">Constituency not available</option>';
+                $flag = false;
+            }
+            $re = ['flag'=>$flag,'opt'=>$opt];
+            echo json_encode($re);
         }
     }
 
