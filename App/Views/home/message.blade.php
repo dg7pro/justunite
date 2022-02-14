@@ -10,9 +10,9 @@
 
                 <ol>
                     <li><a href="{{'/'}}">Home</a></li>
-                    <li><a href="{{'/blog/index'}}">Blog</a></li>
+                    <li><a href="javascript:void(0)">President's Message</a></li>
                 </ol>
-                <h2>{{$blog->title}}</h2>
+                <h2>President's Message</h2>
 
             </div>
         </section><!-- End Breadcrumbs -->
@@ -32,14 +32,14 @@
                             </div>
 
                             <h2 class="entry-title">
-                                <a href="javascript:void(0)">{{$blog->title}}</a>
+                                <a href="javascript:void(0)">{{'President\'s Message'}}</a>
                             </h2>
 
                             <div class="entry-meta">
                                 <ul>
                                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="javascript:void(0)">{{$blog->writer}}</a></li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="javascript:void(0)"><time datetime="2020-01-01">{{$blog->dated}}</time></a></li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>
+                                    {{--<li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)>{{$blog->comments}} Comments</a></li>--}}
                                 </ul>
                             </div>
 
@@ -47,7 +47,7 @@
                                 {!! $blog->content !!}
                             </div>
 
-                            <div class="entry-footer">
+                            {{--<div class="entry-footer">
                                 <i class="bi bi-folder"></i>
                                 <ul class="cats">
                                     <li><a href="javascript:void(0)">Just Unite</a></li>
@@ -59,21 +59,21 @@
                                     <li><a href="javascript:void(0)">Unity</a></li>
                                     <li><a href="javascript:void(0)">Equality</a></li>
                                 </ul>
-                            </div>
+                            </div>--}}
 
                         </article><!-- End blog entry -->
 
                         <div class="blog-author d-flex align-items-center">
                             <img src="{{'/assets/img/team/'.$blog->avatar}}" class="rounded-circle float-left" alt="">
                             <div>
-                                <h4>{{$blog->writer}}</h4>
+                                <h4>{{'Sri '.$blog->writer}}</h4>
                                 <div class="social-links">
                                     <a href="{{'https://twitters.com/'.$blog->twitter}}"><i class="bi bi-twitter"></i></a>
                                     <a href="{{'https://facebook.com/'.$blog->facebook}}"><i class="bi bi-facebook"></i></a>
                                     <a href="{{'https://instagram.com/'.$blog->instagram}}"><i class="biu bi-instagram"></i></a>
                                 </div>
                                 <p>
-                                   {{$blog->about}}
+                                    {{$blog->about}}
                                 </p>
                             </div>
                         </div><!-- End blog author bio -->

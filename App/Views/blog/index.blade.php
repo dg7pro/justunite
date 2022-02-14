@@ -138,7 +138,7 @@
             <div class="container">
 
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{'/'}}">Home</a></li>
                 </ol>
                 <h2>Blog</h2>
 
@@ -167,9 +167,9 @@
 
                                 <div class="entry-meta">
                                     <ul>
-                                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{$blog->writer}}</a></li>
-                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2021-01-01">{{$blog->dated}}</time></a></li>
-                                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">{{$blog->comments}} Comments</a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="javascript:void(0)">{{$blog->writer}}</a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="javascript:void(0)"><time datetime="2021-01-01">{{$blog->dated}}</time></a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>
                                     </ul>
                                 </div>
 

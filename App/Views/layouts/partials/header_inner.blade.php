@@ -6,7 +6,7 @@
             {{--<i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">justuniteindia@gmail.com</a>
             <i class="bi bi-phone-fill phone-icon"></i> +91 8887610230--}}
             @if($authUser)
-                <i class="bi bi-person-fill"></i><a href="{{'/account/settings'}}">{{$authUser->full_name}}</a>
+                <i class="bi bi-person-fill"></i><a href="javascript:void(0)">{{$authUser->full_name}}</a>
                 <i class="bi bi-gear-fill phone-icon"></i><a href="javascript:void(0)" onclick="return showLanguageModal()"> {{$temple['language']}} </a>
             @else
                 <i class="bi bi-person-fill"></i><a href="{{'/register/index'}}">{{$temple['welcome']}}: {{$temple['guest']}} </a>

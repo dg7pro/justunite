@@ -1131,7 +1131,7 @@ class User extends Model
         $hashed_token = $token->getHash();
 
         $sql = 'UPDATE users
-                SET ev = 1,
+                SET is_verified = 1,
                     activation_hash = null
                 WHERE activation_hash = :hashed_token';
 

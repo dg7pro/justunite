@@ -234,7 +234,7 @@
                     <div class="col-lg-6 pt-4 pt-lg-0">
                         {!! $temple['au_matter2'] !!}
 
-                        <a href="what-is-just-unite.php" class="btn-learn-more">{{$temple['learn_more']}}</a>
+                        <a href="{{'/home/president-message'}}" class="btn-learn-more">{{$temple['president_msg']}}</a>
                     </div>
                 </div>
 

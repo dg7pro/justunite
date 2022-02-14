@@ -89,7 +89,7 @@ class Register extends Controller
 
         if($result){
             Flash::addMessage($message, 'success');
-            $this->redirect('/account/dashboard');
+            $this->redirect('/account/verified');
         }else{
             //echo "Could not verify you sorry!";
             throw new Exception('Something went wrong or server is too busy.', 500);

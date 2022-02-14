@@ -17,14 +17,15 @@
                             <label for="my-lang-2">Hindi</label>
                         </div>
 
-                        <p class="status">Toggle is <span>auto width</span><span>full width</span>.</p>
+                        {{--<p class="status">Toggle is <span>auto width</span><span>full width</span>.</p>--}}
+                        <p class="status">अपनी भाषा चुनिए हिंदी अथवा अंग्रेजी</p>
                     </fieldset>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="my-language-selector">Save changes</button>
+                <button type="button" class="btn btn-primary" id="my-language-selector">Submit</button>
             </div>
         </div>
     </div>

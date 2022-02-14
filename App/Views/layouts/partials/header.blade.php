@@ -4,7 +4,7 @@
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
             @if($authUser)
-                <i class="bi bi-person-fill"></i><a href="{{'/account/settings'}}">{{$authUser->full_name}}</a>
+                <i class="bi bi-person-fill"></i><a href="javascript:void(0)">{{$authUser->full_name}}</a>
                 <i class="bi bi-gear-fill phone-icon"></i><a href="javascript:void(0)" onclick="return showLanguageModal()"> {{$temple['language']}} </a>
             @else
                 <i class="bi bi-person-fill"></i><a href="{{'/register/index'}}">{{$temple['welcome']}}: {{$temple['guest']}} </a>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\Models\Article as BlogAlias;
 use App\Models\Image;
 use App\Models\Template;
 use Core\Controller;
@@ -57,6 +58,16 @@ class Home extends Controller
     public function blogAction()
     {
         View::renderBlade('home/blog');
+    }
+
+    public function presidentMessageAction()
+    {
+        //$article_id = $_GET['id'];
+        $blog = new BlogAlias();
+        $blog = $blog->fetchSingle(5);
+
+        View::renderBlade('home/message',['blog'=>$blog]);
+        //View::renderBlade('home/message');
     }
 
     public function langAction()

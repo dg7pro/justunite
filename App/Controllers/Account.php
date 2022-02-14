@@ -104,6 +104,12 @@ class Account extends Authenticated
 
     }
 
+    public function verifiedAction(){
+
+        View::renderBlade('account.verified');
+
+    }
+
 
 
     /**
