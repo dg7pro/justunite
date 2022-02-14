@@ -22,8 +22,11 @@ class Article extends Model
     public function fetchSingle($aid){
 
         //$sql = "SELECT * FROM articles WHERE id=?";
-        $sql = "SELECT articles.*, users.full_name as writer, users.*
-                    FROM articles LEFT JOIN users ON articles.user_id=users.id WHERE articles.id=?";
+        /*$sql = "SELECT articles.*, users.full_name as writer, users.*
+                   FROM articles LEFT JOIN users ON articles.user_id=users.id WHERE articles.id=?";*/
+        $sql = "SELECT articles.*, users.full_name as writer, users.*, abouts.content as about
+                    FROM articles LEFT JOIN users ON articles.user_id=users.id 
+                    LEFT JOIN abouts  ON users.id=abouts.user_id WHERE articles.id=?";
         $pdo=Model::getDB();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$aid]);
