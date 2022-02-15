@@ -550,10 +550,10 @@
                                 <span>{{$temple['leader1_title']}}</span>
                                 <p>{{$temple['leader1_about']}}</p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    <a href="javascript:void(0)"><i class="ri-twitter-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-facebook-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-instagram-fill"></i></a>
+                                    <a href="javascript:void(0)"> <i class="ri-linkedin-box-fill"></i> </a>
                                 </div>
                             </div>
                         </div>
@@ -567,10 +567,10 @@
                                 <span>{{$temple['leader2_title']}}</span>
                                 <p>{{$temple['leader2_about']}}</p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""><i class="ri-linkedin-box-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-twitter-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-facebook-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-instagram-fill"></i></a>
+                                    <a href="javascript:void(0)"><i class="ri-linkedin-box-fill"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -633,7 +633,7 @@
                             {{--<p>Volunters are the hands of the organization. Without Volunteers the life would be impossible. </p>
                             <p>In return they get tremendous amount of social experience and working certificate too.</p>--}}
                             <div class="btn-wrap">
-                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -653,7 +653,7 @@
 {{--                            <p>Core members are the once who actively participate in the decesion making process of the organization.</p>--}}
 {{--                            <p> Together they constitute Core Committee which decides the course of action to be taken and thus function as brain </p>--}}
                             <div class="btn-wrap">
-                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -673,7 +673,7 @@
 {{--                            <p>Observers are the simple members. They support us with their knowledge, experience, and valuable feedback</p>--}}
 {{--                            <p>Generally the decession is put before them and voting is conducted before taking any important decesion </p>--}}
                             <div class="btn-wrap">
-                                <a href="javascript:void(0)" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>

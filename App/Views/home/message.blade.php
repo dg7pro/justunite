@@ -68,7 +68,7 @@
                             <div>
                                 <h4>{{'Sri '.$blog->writer}}</h4>
                                 <div class="social-links">
-                                    <a href="{{'https://twitters.com/'.$blog->twitter}}"><i class="bi bi-twitter"></i></a>
+                                    <a href="{{'https://twitter.com/'.$blog->twitter}}"><i class="bi bi-twitter"></i></a>
                                     <a href="{{'https://facebook.com/'.$blog->facebook}}"><i class="bi bi-facebook"></i></a>
                                     <a href="{{'https://instagram.com/'.$blog->instagram}}"><i class="biu bi-instagram"></i></a>
                                 </div>

@@ -26,7 +26,7 @@ class Article extends Model
                    FROM articles LEFT JOIN users ON articles.user_id=users.id WHERE articles.id=?";*/
         $sql = "SELECT articles.*, users.full_name as writer, users.*, abouts.content as about
                     FROM articles LEFT JOIN users ON articles.user_id=users.id 
-                    LEFT JOIN abouts  ON users.id=abouts.user_id WHERE articles.id=?";
+                    LEFT JOIN abouts  ON users.id=abouts.user_id AND abouts.lang=articles.lang WHERE articles.id=?";
         $pdo=Model::getDB();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$aid]);
