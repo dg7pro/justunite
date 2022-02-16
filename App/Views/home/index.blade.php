@@ -409,17 +409,6 @@
                     <p>{{$temple['works_sh']}}</p>
                 </div>
 
-                {{--<div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div>--}}
-
                 <div class="row portfolio-container">
 
                     @foreach($images as $img)
@@ -435,96 +424,6 @@
                     </div>
 
                     @endforeach
-
-                    {{--<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/neta-1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Image 1</h4>
-                            <p>Er. Dhananjay speaking on eradication of poverty in India</p>
-                            <a href="assets/img/portfolio/neta-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Er. Dhananjay speaking on eradication of poverty in India"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/neta-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets/img/portfolio/neta-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/neta-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <a href="assets/img/portfolio/neta-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/img/portfolio/neta-4.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <a href="assets/img/portfolio/neta-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/neta-5.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <a href="assets/img/portfolio/neta-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/neta-6.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <a href="assets/img/portfolio/neta-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>--}}
-
-                    <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                      <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                      <div class="portfolio-info">
-                        <h4>Card 1</h4>
-                        <p>Card</p>
-                        <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                      </div>
-                    </div> -->
-
-                    <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                      <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                      <div class="portfolio-info">
-                        <h4>Card 3</h4>
-                        <p>Card</p>
-                        <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                      </div>
-                    </div> -->
-
-                    <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                      <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                      <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                      </div>
-                    </div> -->
 
                 </div>
 
@@ -576,40 +475,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="300">
-                      <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                          <h4>William Anderson</h4>
-                          <span>CTO</span>
-                          <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                          <div class="social">
-                            <a href=""><i class="ri-twitter-fill"></i></a>
-                            <a href=""><i class="ri-facebook-fill"></i></a>
-                            <a href=""><i class="ri-instagram-fill"></i></a>
-                            <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-
-                    <!-- <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
-                      <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                          <h4>Amanda Jepson</h4>
-                          <span>Accountant</span>
-                          <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                          <div class="social">
-                            <a href=""><i class="ri-twitter-fill"></i></a>
-                            <a href=""><i class="ri-facebook-fill"></i></a>
-                            <a href=""><i class="ri-instagram-fill"></i></a>
-                            <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-
                 </div>
 
             </div>
@@ -630,8 +495,6 @@
                         <div class="box jubox-1">
                             <h3>{{$temple['volunteer']}}</h3>
                             {!! $temple['volunteer_about'] !!}
-                            {{--<p>Volunters are the hands of the organization. Without Volunteers the life would be impossible. </p>
-                            <p>In return they get tremendous amount of social experience and working certificate too.</p>--}}
                             <div class="btn-wrap">
                                 <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
@@ -642,16 +505,7 @@
                         <div class="box jubox-2">
                             <h3>{{$temple['core']}}</h3>
                             {!! $temple['core_about'] !!}
-                            <!-- <h4><sup>$</sup>19<span> / month</span></h4>
-                            <ul>
-                              <li>Aida dere</li>
-                              <li>Nec feugiat nisl</li>
-                              <li>Nulla at volutpat dola</li>
-                              <li>Pharetra massa</li>
-                              <li class="na">Massa ultricies mi</li>
-                            </ul> -->
-{{--                            <p>Core members are the once who actively participate in the decesion making process of the organization.</p>--}}
-{{--                            <p> Together they constitute Core Committee which decides the course of action to be taken and thus function as brain </p>--}}
+
                             <div class="btn-wrap">
                                 <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
@@ -662,39 +516,12 @@
                         <div class="box jubox-3">
                             <h3>{{$temple['observers']}}</h3>
                             {!! $temple['observers_about'] !!}
-                            <!-- <h4><sup>$</sup>29<span> / month</span></h4>
-                            <ul>
-                              <li>Aida dere</li>
-                              <li>Nec feugiat nisl</li>
-                              <li>Nulla at volutpat dola</li>
-                              <li>Pharetra massa</li>
-                              <li>Massa ultricies mi</li>
-                            </ul> -->
-{{--                            <p>Observers are the simple members. They support us with their knowledge, experience, and valuable feedback</p>--}}
-{{--                            <p>Generally the decession is put before them and voting is conducted before taking any important decesion </p>--}}
+
                             <div class="btn-wrap">
                                 <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                      <div class="box">
-                        <span class="advanced">Advanced</span>
-                        <h3>Ultimate</h3>
-                        <h4><sup>$</sup>49<span> / month</span></h4>
-                        <ul>
-                          <li>Aida dere</li>
-                          <li>Nec feugiat nisl</li>
-                          <li>Nulla at volutpat dola</li>
-                          <li>Pharetra massa</li>
-                          <li>Massa ultricies mi</li>
-                        </ul>
-                        <div class="btn-wrap">
-                          <a href="javascript:void(0)" class="btn-buy">Buy Now</a>
-                        </div>
-                      </div>
-                    </div> -->
 
                 </div>
 
@@ -725,7 +552,6 @@
                             <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                 <p>
                                     {{$temple['faq2_ans']}}
-                                    From the very childhood we are taught that India is a diverse country and there is unity among diversity. But the truth is - there is no total unity on the ground instead there is vast conflict of Interest. Our organization as the name suggest, serves India by fostering unity among different sections of Indian society
                             </div>
                         </li>
 
@@ -737,25 +563,6 @@
                                 </p>
                             </div>
                         </li>
-
-                        <!-- <li data-aos="fade-up" data-aos-delay="400">
-                          <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                          <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                            </p>
-                          </div>
-                        </li> -->
-
-                        <!-- <li data-aos="fade-up" data-aos-delay="500">
-                          <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                          <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                              Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                            </p>
-                          </div>
-                        </li> -->
-
                     </ul>
                 </div>
 
@@ -798,7 +605,7 @@
 
                     <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
 
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="javascript:void(0)" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="{{$temple['your_name']}}" required>
