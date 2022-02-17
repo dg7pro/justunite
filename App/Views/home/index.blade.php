@@ -418,8 +418,8 @@
                         <div class="portfolio-info">
                             <h4>{{$img->title}}</h4>
                             <p>{{$img->description}}</p>
-                            <a href="{{'assets/img/portfolio/'.$img->name}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{$img->description}}"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            {{--<a href="{{'assets/img/portfolio/'.$img->name}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{$img->description}}"><i class="bx bx-plus"></i></a>--}}
+                            {{--<a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>--}}
                         </div>
                     </div>
 

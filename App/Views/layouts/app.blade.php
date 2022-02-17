@@ -11,7 +11,7 @@
     <meta content="{{$_SESSION['csrf_token']}}" name="csrf-token">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="{{'assets/img/favicon.png'}}" />
+    <link rel="icon" type="image/png" href="{{'assets/img/favicon-32x32.png'}}" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
