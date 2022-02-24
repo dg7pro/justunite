@@ -605,7 +605,7 @@
 
                     <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
 
-                        <form action="javascript:void(0)" method="post" role="form" class="php-email-form">
+                        <form action="{{'/contact/msg'}}" method="post" role="form" id="contact-form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="{{$temple['your_name']}}" required>
@@ -620,12 +620,16 @@
                             <div class="form-group mt-3">
                                 <textarea class="form-control" name="message" rows="5" placeholder="{{$temple['msg']}}" required></textarea>
                             </div>
-                            <div class="my-3">
+                            <!-- Google reCAPTCHA widget -->
+                            <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse"></div>
+
+                            <input type="hidden" id="captcha-response" name="captcha-response" />
+                            {{--<div class="my-3">
                                 <div class="loading">Loading</div>
                                 <div class="error-message"></div>
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">{{$temple['send_msg']}}</button></div>
+                            </div>--}}
+                            <div class="text-center"><button type="submit" name="submit">{{$temple['send_msg']}}</button></div>
                         </form>
 
                     </div>

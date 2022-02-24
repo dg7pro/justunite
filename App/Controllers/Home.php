@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\Article as BlogAlias;
 use App\Models\Image;
 use App\Models\Template;
+use App\Models\Users;
 use Core\Controller;
 use \Core\View;
 
@@ -55,11 +56,21 @@ class Home extends Controller
 //        var_dump($actual_link);
     }
 
+    /**
+     * Show the Blogs Page
+     *
+     * @return void
+     */
     public function blogAction()
     {
         View::renderBlade('home/blog');
     }
 
+    /**
+     * President's Message page
+     *
+     * @return void
+     */
     public function presidentMessageAction()
     {
         //$article_id = $_GET['id'];
@@ -68,6 +79,26 @@ class Home extends Controller
 
         View::renderBlade('home/message',['blog'=>$blog]);
         //View::renderBlade('home/message');
+    }
+
+    /**
+     * Show donation page
+     * @return void
+     */
+    public function donateAction(){
+
+        View::renderBlade('home/donate');
+
+    }
+
+    /**
+     * Show list of social Presence
+     * @return void
+     */
+    public function socialMediaAction(){
+
+        View::renderBlade('home/social_media');
+
     }
 
     public function langAction()

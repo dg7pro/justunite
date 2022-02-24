@@ -212,6 +212,105 @@ class User extends Model
 
     }
 
+    /**
+     * Validate name
+     */
+    public function newValidateFacebook(){
+
+        // whatsapp address
+        if(!empty($this->facebook)){
+            if (!preg_match("/^[a-z\d.]{5,}$/",$this->facebook)) {
+                $this->errors[] = 'Facebook username looks invalid';
+            }
+        }
+
+    }
+
+    /**
+     * Validate name
+     */
+    public function newValidateTwitter(){
+
+        // whatsapp address
+        if(!empty($this->twitter)){
+            if (!preg_match("/^[A-Za-z0-9_]{1,15}$/",$this->twitter)) {
+                $this->errors[] = 'Twitter username looks invalid';
+            }
+        }
+
+    }
+
+    /**
+     * Validate name
+     */
+    public function newValidateInstagram(){
+
+        // whatsapp address
+        if(!empty($this->instagram)){
+            if (!preg_match("/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,30}$/",$this->instagram)) {
+                $this->errors[] = 'Instagram username looks invalid';
+            }
+        }
+
+    }
+
+    /**
+     * @param $data
+     * @return bool
+     */
+    public function updateMemberInfo($data): bool
+    {
+
+        foreach ($data as $key => $value){
+            $this->$key=$value;
+        }
+
+        $this->newValidateMobile();
+        $this->newValidateWhatsapp();
+        $this->newValidateFacebook();
+        $this->newValidateTwitter();
+        $this->newValidateInstagram();
+
+        if(empty($this->errors)){
+
+            $sql = "UPDATE users SET 
+                gender= :gender,
+                dob= :dob,
+                religion= :religion,            
+                language= :language,
+                mobile= :mobile,
+                whatsapp= :whatsapp,
+                country= :country, 
+                state= :state,
+                district= :district,
+                constituency= :constituency,
+                facebook= :facebook,
+                twitter= :twitter,
+                instagram= :instagram 
+                WHERE id= :id";
+
+            $pdo = Model::getDB();
+            $stmt=$pdo->prepare($sql);
+            return $stmt->execute([
+                ':gender'=>$this->gender,
+                ':dob'=>$this->dob,
+                ':religion'=>$this->religion,
+                ':language'=>$this->language,
+                ':mobile'=>$this->mobile,
+                ':whatsapp'=>$this->whatsapp,
+                ':country'=>'India',
+                ':state'=>$this->state,
+                ':district'=>$this->district,
+                ':constituency'=>$this->constituency,
+                ':facebook'=>$this->facebook,
+                ':twitter'=>$this->twitter,
+                ':instagram'=>$this->instagram,
+                ':id'=>$this->id
+            ]);
+        }
+        return false;
+    }
+
 
 
     /**

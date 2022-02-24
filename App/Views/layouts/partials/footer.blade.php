@@ -9,7 +9,7 @@
                     <p>{{$temple['newsletter_title']}}</p>
                 </div>
                 <div class="col-lg-6">
-                    <form action="javascript:void(0)" method="post">
+                    <form action="{{'/subscribe/add'}}" method="post">
                         <input type="email" name="email" placeholder="{{$temple['em_addr']}}"><input type="submit" value="{{$temple['subscribe']}}">
                     </form>
                 </div>

@@ -39,12 +39,17 @@ class Account extends Authenticated
     {
         // Fetch user and shorted profiles ids
         $user = Auth::getUser();
-        //var_dump($user);
+
+        $genders = ['Male','Female','Other'];
+
 
         // Render view
-        //View::renderBlade('account.dashboard',['authUser'=>$user]);
-
-        View::renderBlade('home.index',['authUser'=>$user]);
+        View::renderBlade('account.dashboard',['authUser'=>$user,
+            'religions'=>UserVariables::fetch('religions'),
+            'languages'=>UserVariables::fetch('languages'),
+            'states'=>UserVariables::fetch('states'),
+            'genders'=>$genders
+        ]);
 
     }
 
@@ -93,6 +98,37 @@ class Account extends Authenticated
                     Flash::addMessage($error, 'danger');
                 }
                 $this->redirect('/account/add-info?arr='.$arr);
+            }
+        }
+
+    }
+
+    public function updateInfoAction(){
+
+        $csrf = new Csrf($_POST['_token']);
+        if(!$csrf->validate()){
+            unset($_SESSION["csrf_token"]);
+            die("CSRF token validation failed");
+        }
+
+        if (isset($_POST['update-info-submit'])) {
+
+            $user = Auth::getUser();
+            $result = $user->updateMemberInfo($_POST);
+
+            if($result){
+
+                //$this->redirect('/account/confirm');
+                Flash::addMessage('Account Info updated successfully', 'success');
+                $this->redirect('/account/dashboard');
+
+            }else{
+
+                $arr = json_encode($_POST);
+                foreach ($user->errors as $error) {
+                    Flash::addMessage($error, 'danger');
+                }
+                $this->redirect('/account/dashboard');
             }
         }
 

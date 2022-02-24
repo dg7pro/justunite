@@ -42,7 +42,7 @@ class Adjax extends Administered
                     <th>mobile</th>                     
                     <th>email</th>                     
                     <th>is_a</th>  
-                    <th>is_b</th>                                                                        
+                    <th>is_v</th>                                                                        
                     <th>edit</th>                    
                 </tr>';
 
@@ -55,7 +55,7 @@ class Adjax extends Administered
                 <td>'.$row->mobile.'</td>                
                 <td>'.$row->email.'</td>                
                 <td>'.$row->is_admin.'</td>
-                <td>'.$row->is_block.'</td>              
+                <td>'.$row->is_verified.'</td>              
                 <td><a href="/admin/edit-user?id='.$row->id.'" type="button" class="mb-1 btn btn-sm btn-success">edit</a></td>              
                 </tr>';
             }

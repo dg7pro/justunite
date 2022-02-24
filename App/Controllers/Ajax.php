@@ -8,7 +8,6 @@ use App\Auth;
 use App\Models\Constituency;
 use App\Models\District;
 use App\Models\Notification;
-use App\Models\RecordContact;
 use Core\Controller;
 
 

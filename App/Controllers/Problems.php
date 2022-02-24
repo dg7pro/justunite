@@ -18,8 +18,8 @@ class Problems extends Controller
     {
         $problem = new Problem();
         $problems = $problem->fetchAll();
-        var_dump($problems);
-        //View::renderBlade('problems/index');
+        //var_dump($problems);
+        View::renderBlade('problems/index',['problems'=>$problems]);
     }
 
 }

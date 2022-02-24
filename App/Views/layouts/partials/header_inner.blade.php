@@ -44,7 +44,7 @@
                 <li><a class="nav-link" href="{{'/#team'}}">{{$temple['team']}}</a></li>
                 <li><a class="nav-link" href="{{'/#members'}}">{{$temple['members']}}</a></li>
                 <li><a class="nav-link" href="{{'/blog/index'}}">{{$temple['blog']}}</a></li>
-                <li><a class="nav-link" href="javascript:void(0)">{{$temple['donate']}}</a></li>
+                <li><a class="nav-link" href="{{'/home/donate'}}">{{$temple['donate']}}</a></li>
                 <li><a class="nav-link" href="{{'/#contact'}}">{{$temple['contact']}}</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
