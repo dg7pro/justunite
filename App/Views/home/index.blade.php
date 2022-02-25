@@ -124,6 +124,10 @@
             }
         }
 
+        .g-recaptcha {
+            visibility: hidden;
+        }
+
     </style>
 
 @endsection
@@ -618,10 +622,11 @@
                                 <input type="text" class="form-control" name="subject" id="subject" placeholder="{{$temple['subject']}}" required>
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="{{$temple['msg']}}" required></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="{{$temple['msg']}}" required></textarea>
+                                <div id="messageHelp" class="form-text">This site is protected from recaptcha and Google</div>
                             </div>
                             <!-- Google reCAPTCHA widget -->
-                            <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse"></div>
+                            <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse" hidden></div>
 
                             <input type="hidden" id="captcha-response" name="captcha-response" />
                             {{--<div class="my-3">
@@ -699,4 +704,15 @@
             }
 
     </script>
+
+    <script>
+        var onloadCallback = function() {
+            grecaptcha.execute();
+        };
+
+        function setResponse(response) {
+            document.getElementById('captcha-response').value = response;
+        }
+    </script>
+
 @endsection

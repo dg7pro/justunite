@@ -43,6 +43,7 @@
 <!-- footer -->
 @include('layouts.partials.footer')
 
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
 
 <!-- Vendor JS Files -->
 <script src="/assets/vendor/aos/aos.js"></script>

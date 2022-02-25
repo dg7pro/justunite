@@ -10,7 +10,13 @@
                 </div>
                 <div class="col-lg-6">
                     <form action="{{'/subscribe/add'}}" method="post">
-                        <input type="email" name="email" placeholder="{{$temple['em_addr']}}"><input type="submit" value="{{$temple['subscribe']}}">
+                        <input type="email" name="email" placeholder="{{$temple['em_addr']}}">
+
+                        <!-- Google reCAPTCHA widget -->
+                        <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse" hidden></div>
+                        <input type="hidden" id="captcha-response" name="captcha-response" />
+
+                        <input type="submit" value="{{$temple['subscribe']}}">
                     </form>
                 </div>
             </div>

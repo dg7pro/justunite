@@ -12,23 +12,33 @@ class Subscribe extends Controller
 
     public function addAction(){
 
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+
+        $statusMsg = '';
+
         $nl = new Subscription($_POST);
-        if($nl->save()){
 
-            // Send email
-            //$nl->sendActivationCode();
+        if(isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
+            if ($nl->save()) {
 
-            Flash::addMessage('Thanks for Subscribing to our Newsletter','success');
-            $this->redirect('/subscribe/success');
-        }else{
+                // Send email
+                //$nl->sendActivationCode();
 
-            foreach($nl->errors as $error){
-                Flash::addMessage($error,'danger');
+                Flash::addMessage('Thanks for Subscribing to our Newsletter', 'success');
+                $this->redirect('/subscribe/success');
+            } else {
+
+                foreach ($nl->errors as $error) {
+                    Flash::addMessage($error, 'danger');
+                }
+                $this->redirect('/subscribe/index');
+
             }
+        }else{
+            $statusMsg = 'Robot verification failed, please try again.';
+            Flash::addMessage($statusMsg,'danger');
             $this->redirect('/subscribe/index');
-
         }
-
     }
 
     public function successAction(){
