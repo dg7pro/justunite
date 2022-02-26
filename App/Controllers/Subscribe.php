@@ -18,26 +18,41 @@ class Subscribe extends Controller
 
         $nl = new Subscription($_POST);
 
-        if(isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
-            if ($nl->save()) {
+        if(isset($_POST['submit'])) {
+            if (isset($_POST['captcha-response2']) && !empty($_POST['captcha-response2'])) {
 
-                // Send email
-                //$nl->sendActivationCode();
+                // Get verify response data
+                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response2']);
+                $responseData = json_decode($verifyResponse);
+                if ($responseData->success) {
+                    if ($nl->save()) {
 
-                Flash::addMessage('Thanks for Subscribing to our Newsletter', 'success');
-                $this->redirect('/subscribe/success');
-            } else {
+                        // Send email
+                        //$nl->sendActivationCode();
 
-                foreach ($nl->errors as $error) {
-                    Flash::addMessage($error, 'danger');
+                        Flash::addMessage('Thanks for Subscribing to our Newsletter', 'success');
+                        $this->redirect('/subscribe/success');
+                    } else {
+
+                        foreach ($nl->errors as $error) {
+                            Flash::addMessage($error, 'danger');
+                        }
+                        $this->redirect('/subscribe/index');
+
+                    }
+
+                } else {
+
+                    $statusMsg = 'Robot verification failed, please try again.';
+                    Flash::addMessage($statusMsg, 'danger');
+                    $this->redirect('/subscribe/index');
                 }
-                $this->redirect('/subscribe/index');
 
+            } else {
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                $this->redirect('/subscribe/index');
             }
-        }else{
-            $statusMsg = 'Robot verification failed, please try again.';
-            Flash::addMessage($statusMsg,'danger');
-            $this->redirect('/subscribe/index');
         }
     }
 

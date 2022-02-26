@@ -712,6 +712,7 @@
 
         function setResponse(response) {
             document.getElementById('captcha-response').value = response;
+            document.getElementById('captcha-response2').value = response;
         }
     </script>
 

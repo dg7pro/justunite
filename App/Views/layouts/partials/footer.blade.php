@@ -14,9 +14,9 @@
 
                         <!-- Google reCAPTCHA widget -->
                         <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse" hidden></div>
-                        <input type="hidden" id="captcha-response" name="captcha-response" />
+                        <input type="hidden" id="captcha-response2" name="captcha-response2" />
 
-                        <input type="submit" value="{{$temple['subscribe']}}">
+                        <input type="submit" name="submit" value="{{$temple['subscribe']}}">
                     </form>
                 </div>
             </div>
