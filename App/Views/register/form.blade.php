@@ -73,6 +73,10 @@
                     </div>
                 </div>
 
+                <!-- Google reCAPTCHA widget -->
+                <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse" hidden></div>
+                <input type="hidden" id="captcha-response" name="captcha-response" />
+
                 <div class="d-grid gap-2 col-6 mt-5">
                     <button class="btn btn-primary btn-lg" type="submit" value="Register" >Register</button>
                 </div>
@@ -110,6 +114,20 @@
             });
 
         });
+
+    </script>
+
+    <!-- Google Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+    <script>
+
+        /* Google Recaptcha Response */
+        var onloadCallback = function() {
+            grecaptcha.execute();
+        };
+        function setResponse(response) {
+            document.getElementById('captcha-response').value = response;
+        }
 
     </script>
 @endsection

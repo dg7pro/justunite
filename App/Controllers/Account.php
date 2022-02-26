@@ -82,23 +82,47 @@ class Account extends Authenticated
             die("CSRF token validation failed");
         }
 
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
+
         if (isset($_POST['save-info-submit'])) {
 
-            $user = Auth::getUser();
-            $result = $user->saveMemberInfo($_POST);
+            if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
 
-            if($result){
+                // Get verify response data
+                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+                $responseData = json_decode($verifyResponse);
+                if ($responseData->success) {
 
-                $this->redirect('/account/confirm');
+                    $user = Auth::getUser();
+                    $result = $user->saveMemberInfo($_POST);
 
-            }else{
+                    if($result){
 
-                $arr = json_encode($_POST);
-                foreach ($user->errors as $error) {
-                    Flash::addMessage($error, 'danger');
+                        $this->redirect('/account/confirm');
+
+                    }else{
+
+                        $arr = json_encode($_POST);
+                        foreach ($user->errors as $error) {
+                            Flash::addMessage($error, 'danger');
+                        }
+                        $this->redirect('/account/add-info?arr='.$arr);
+                    }
+
+                }else {
+
+                    $statusMsg = 'Robot verification failed, please try again.';
+                    Flash::addMessage($statusMsg, 'danger');
+                    $this->redirect('/account/add-info');
                 }
-                $this->redirect('/account/add-info?arr='.$arr);
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                $this->redirect('/account/add-info');
             }
+
         }
 
     }
@@ -111,27 +135,49 @@ class Account extends Authenticated
             die("CSRF token validation failed");
         }
 
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
+
         if (isset($_POST['update-info-submit'])) {
 
-            $user = Auth::getUser();
-            $result = $user->updateMemberInfo($_POST);
+            if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
 
-            if($result){
+                // Get verify response data
+                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+                $responseData = json_decode($verifyResponse);
+                if ($responseData->success) {
+                    $user = Auth::getUser();
+                    $result = $user->updateMemberInfo($_POST);
 
-                //$this->redirect('/account/confirm');
-                Flash::addMessage('Account Info updated successfully', 'success');
-                $this->redirect('/account/dashboard');
+                    if($result){
 
-            }else{
+                        //$this->redirect('/account/confirm');
+                        Flash::addMessage('Account Info updated successfully', 'success');
+                        $this->redirect('/account/dashboard');
 
-                $arr = json_encode($_POST);
-                foreach ($user->errors as $error) {
-                    Flash::addMessage($error, 'danger');
+                    }else{
+
+                        $arr = json_encode($_POST);
+                        foreach ($user->errors as $error) {
+                            Flash::addMessage($error, 'danger');
+                        }
+                        $this->redirect('/account/dashboard');
+                    }
+
+                }else {
+
+                    $statusMsg = 'Robot verification failed, please try again.';
+                    Flash::addMessage($statusMsg, 'danger');
+                    $this->redirect('/account/dashboard');
                 }
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
                 $this->redirect('/account/dashboard');
             }
-        }
 
+        }
     }
 
     public function confirmAction(){

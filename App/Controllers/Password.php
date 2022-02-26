@@ -46,16 +46,40 @@ class Password extends \Core\Controller
             die("CSRF token validation failed");
         }
 
-        $this->validateEmail($_POST);
-        $user = User::findByEmail($_POST['email']);
-        if(!$user){
-            Flash::addMessage('No such email exist in our database', Flash::DANGER);
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
+
+        if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
+
+            // Get verify response data
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
+
+                $this->validateEmail($_POST);
+                $user = User::findByEmail($_POST['email']);
+                if(!$user){
+                    Flash::addMessage('No such email exist in our database', Flash::DANGER);
+                    $this->redirect('/password/forgot');
+                }
+
+                User::sendPasswordReset($_POST['email']);
+
+                View::renderBlade('password/reset-requested2');
+
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                $this->redirect('/password/forgot');
+            }
+        }else {
+
+            $statusMsg = 'Robot verification failed, please try again.';
+            Flash::addMessage($statusMsg, 'danger');
             $this->redirect('/password/forgot');
         }
 
-        User::sendPasswordReset($_POST['email']);
-
-        View::renderBlade('password/reset-requested2');
     }
 
     /**
@@ -85,21 +109,49 @@ class Password extends \Core\Controller
 
         $user = $this->getUserOrExit($token);
 
-        if ($user->resetPassword($_POST['password'])) {
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
 
-            //View::renderBlade('Password/reset-success');
-            $this->redirect('/password/success');
+        if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
 
-        } else {
+            // Get verify response data
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
 
-            foreach($user->errors as $error){
-                Flash::addMessage($error,'danger');
+                if ($user->resetPassword($_POST['password'])) {
+
+                    //View::renderBlade('Password/reset-success');
+                    $this->redirect('/password/success');
+
+                } else {
+
+                    foreach($user->errors as $error){
+                        Flash::addMessage($error,'danger');
+                    }
+                    View::renderBlade('password/reset2', [
+                        'token' => $token
+                    ]);
+
+                }
+
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                View::renderBlade('password/reset2', [
+                    'token' => $token
+                ]);
             }
+        }else {
+
+            $statusMsg = 'Robot verification failed, please try again.';
+            Flash::addMessage($statusMsg, 'danger');
             View::renderBlade('password/reset2', [
                 'token' => $token
             ]);
-
         }
+
     }
 
     /**

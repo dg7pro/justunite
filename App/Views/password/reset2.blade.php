@@ -25,6 +25,11 @@
                     <input type="password" class="form-control" id="cPassword" name="confirm_password" placeholder="Confirm password" required>
                 </div>
 
+                <!-- Google reCAPTCHA widget -->
+                <div class="g-recaptcha" data-sitekey="6LdBfJseAAAAAKV_1ZbHUbpjbDUnDzAYrQ5PNt5p" data-badge="inline" data-size="invisible" data-callback="setResponse" hidden></div>
+                <input type="hidden" id="captcha-response" name="captcha-response" />
+
+
                 <button type="submit" name="reset-password-submit" class="btn btn-primary">Reset Password</button>
 
             </form>
@@ -32,4 +37,22 @@
         </div>
     </section>
     <!-- login ends -->
+@endsection
+
+@section('extra_js')
+
+    <!-- Google Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+    <script>
+
+        /* Google Recaptcha Response */
+        var onloadCallback = function() {
+            grecaptcha.execute();
+        };
+        function setResponse(response) {
+            document.getElementById('captcha-response').value = response;
+        }
+
+    </script>
+
 @endsection

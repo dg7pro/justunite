@@ -45,22 +45,46 @@ class Login extends Controller
             die("CSRF token validation failed");
         }
 
-        $this->checkEmail($_POST);
-        $user = User::authenticate($_POST['uid'],$_POST['password']);
-        $remember_me = isset($_POST['remember_me']);   // true or false
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
 
-        if($user){
+        if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
 
-            Auth::login($user,$remember_me);
+            // Get verify response data
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
 
-            $this->redirect(Auth::getReturnToPage());
+                $this->checkEmail($_POST);
+                $user = User::authenticate($_POST['uid'],$_POST['password']);
+                $remember_me = isset($_POST['remember_me']);   // true or false
 
+                if($user){
+
+                    Auth::login($user,$remember_me);
+
+                    $this->redirect(Auth::getReturnToPage());
+
+                }
+                else{
+
+                    Flash::addMessage('Invalid Credentials. Enter correct email & password', Flash::DANGER);
+                    View::renderBlade('login/index',['uid'=>$_POST['uid'],'remember_me'=>$remember_me]);
+                }
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                $this->redirect('login/index');
+            }
+
+        }else {
+
+            $statusMsg = 'Robot verification failed, please try again.';
+            Flash::addMessage($statusMsg, 'danger');
+            $this->redirect('login/index');
         }
-        else{
 
-            Flash::addMessage('Invalid Credentials. Enter correct email & password', Flash::DANGER);
-            View::renderBlade('login/index',['uid'=>$_POST['uid'],'remember_me'=>$remember_me]);
-        }
     }
 
     /**

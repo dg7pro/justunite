@@ -43,25 +43,49 @@ class Register extends Controller
             die("CSRF token validation failed");
         }
 
-        $user = new User($_POST);
-        if($user->save()){
+        $secretKey  = "6LdBfJseAAAAAIkW9pOzuJ3dYTYBZJNiF17vOeTK";
+        $statusMsg = '';
 
-            // Send email
-            $user->sendActivationEmail();
+        if (isset($_POST['captcha-response']) && !empty($_POST['captcha-response'])) {
 
-            Auth::login($user,true);
+            // Get verify response data
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['captcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
 
-            Flash::addMessage('Welcome to Just Unite, Please provide some more basic details','success');
-            $this->redirect('/account/add-info');
-            //$this->successAction();
+                $user = new User($_POST);
 
-        }else{
+                if($user->save()){
 
-            foreach($user->errors as $error){
-                Flash::addMessage($error,'danger');
+                    // Send email
+                    $user->sendActivationEmail();
+
+                    Auth::login($user,true);
+
+                    Flash::addMessage('Welcome to Just Unite, Please provide some more basic details','success');
+                    $this->redirect('/account/add-info');
+                    //$this->successAction();
+
+                }else{
+
+                    foreach($user->errors as $error){
+                        Flash::addMessage($error,'danger');
+                    }
+                    $this->redirect('/register/index');
+
+                }
+
+            }else {
+
+                $statusMsg = 'Robot verification failed, please try again.';
+                Flash::addMessage($statusMsg, 'danger');
+                $this->redirect('/register/index');
             }
-            $this->redirect('/register/index');
 
+        }else {
+            $statusMsg = 'Robot verification failed, please try again.';
+            Flash::addMessage($statusMsg, 'danger');
+            $this->redirect('/register/index');
         }
 
     }
