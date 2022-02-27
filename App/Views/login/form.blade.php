@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="email" class="form-control" id="uid" name="uid" placeholder="Email/Mobile" required>
+                    <input type="email" class="form-control" id="uid" name="uid" value="{{$_GET['uid'] ?? ''}}" placeholder="Email/Mobile" required>
                 </div>
 
                 <div class="mb-3">
@@ -27,7 +27,7 @@
                 <div class="remember-me">
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="remember-me" value="remember_me" name="remember_me" checked>
-                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        <label class="form-check-label" for="remember-me">Remember me</label>
                     </div>
                     <div><a href="{{'/password/forgot'}}">Forget Password?</a></div>
                 </div>
