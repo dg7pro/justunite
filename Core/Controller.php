@@ -74,18 +74,28 @@ abstract class Controller
     {
     }
 
+    /**
+     * @param $url
+     * @return void
+     */
     public function redirect($url){
-        header('Location: http://'. $_SERVER['HTTP_HOST'] . $url, true, 303);
+        header('Location: https://'. $_SERVER['HTTP_HOST'] . $url, true, 303);
         exit();
     }
 
+    /**
+     * @return void
+     */
     public function requireGuest(){
 
         if(!Auth::isGuest()){
-            $this->redirect('/Account/dashboard');
+            $this->redirect('/dashboard');
         }
     }
 
+    /**
+     * @return void
+     */
     public function requireLogin(){
 
         if(!Auth::isLoggedIn()){
@@ -93,10 +103,14 @@ abstract class Controller
             Flash::addMessage('Please login to access that page');
             //echo "Access Denied";
             Auth::rememberRequestedPage();
-            $this->redirect('/Login/index');
+            $this->redirect('/login');
         }
     }
 
+    /**
+     * @return void
+     * @throws \Exception
+     */
     public function requireAdmin(){
 
         if(!Auth::isAdmin()){

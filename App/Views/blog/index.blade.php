@@ -162,14 +162,15 @@
                                 </div>
 
                                 <h2 class="entry-title">
-                                    <a href="{{'/blog/article?id='.$blog->id}}">{{$blog->title}}</a>
+                                    {{--<a href="{{'/blog/article?id='.$blog->id}}">{{$blog->title}}</a>--}}
+                                    <a href="{{'/blog/'.$blog->slug}}">{{$blog->title}}</a>
                                 </h2>
 
                                 <div class="entry-meta">
                                     <ul>
                                         <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="javascript:void(0)">{{$blog->writer}}</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="javascript:void(0)"><time datetime="2021-01-01">{{$blog->dated}}</time></a></li>
-                                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>
+                                        {{--<li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>--}}
                                     </ul>
                                 </div>
 

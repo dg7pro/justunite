@@ -500,7 +500,7 @@
                             <h3>{{$temple['volunteer']}}</h3>
                             {!! $temple['volunteer_about'] !!}
                             <div class="btn-wrap">
-                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -511,7 +511,7 @@
                             {!! $temple['core_about'] !!}
 
                             <div class="btn-wrap">
-                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>
@@ -522,7 +522,7 @@
                             {!! $temple['observers_about'] !!}
 
                             <div class="btn-wrap">
-                                <a href="{{'/register/index'}}" class="btn-buy">{{$temple['join_us']}}</a>
+                                <a href="{{'/register'}}" class="btn-buy">{{$temple['join_us']}}</a>
                             </div>
                         </div>
                     </div>

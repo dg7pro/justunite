@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Article as BlogAlias;
 use Core\Controller;
 use Core\View;
+use Exception;
 
 class Blog extends Controller
 {
@@ -34,7 +35,24 @@ class Blog extends Controller
 
         View::renderBlade('blog/single',['blog'=>$blog]);
 
+    }
 
+    /**
+     * @throws Exception
+     */
+    public function slugAction()
+    {
+        $slug = $this->route_params['slug'];
+        //$lang = $_COOKIE['ju_user_lang'] ?? 'english';
+
+        $blog = new BlogAlias();
+        $blog = $blog->fetchFromSlug($slug);
+
+        if(!$blog){
+            throw new Exception('Sorry the blog post with this name not found.', 404);
+        }
+
+        View::renderBlade('blog/single',['blog'=>$blog]);
 
     }
 

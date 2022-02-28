@@ -47,20 +47,27 @@ $router = new Core\Router();
 
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('login', ['controller' =>'Account','action'=>'login']);
-$router->add('admin', ['controller' =>'Admin','action'=>'dashboard']);
+
+$router->add('register', ['controller' =>'Register','action'=>'index']);
+$router->add('login', ['controller' =>'Login','action'=>'index']);
+$router->add('dashboard', ['controller' =>'Account','action'=>'dashboard']);
+$router->add('settings', ['controller' =>'Account','action'=>'settings']);
+$router->add('admin', ['controller' =>'Admin','action'=>'index']);
+$router->add('logout', ['controller' =>'Account','action'=>'logout']);
+
+$router->add('donate', ['controller' =>'Home','action'=>'donate']);
+$router->add('members', ['controller' =>'Members','action'=>'index']);
+$router->add('problems', ['controller' =>'Problems','action'=>'index']);
+$router->add('parties', ['controller' =>'Parties','action'=>'index']);
+
+$router->add('blog', ['controller' =>'Blog','action'=>'index']);
+$router->add('blog/{slug:[a-z]+(?:-[a-z]+)*}', ['controller' => 'Blog', 'action' => 'slug']);
+
 $router->add('{controller}/{action}');
-//$router->add('{controller}/{action}/{un:[a-zA-Z0-9-\.]+}');
-//$router->add('{controller}/{action}/{pid:([A-Z]{2}[0-9]{5})+}');
-$router->add('profile/{pid:([A-Z]{2}[0-9]{5})+}',['controller' =>'Profile','action'=>'show']);
+
 $router->add('password/reset/{token:[\da-f]+}', ['controller' => 'Password', 'action' => 'reset']);
 $router->add('register/activate/{token:[\da-f]+}', ['controller' => 'Register', 'action' => 'activate']);
 
-//$router->add('group/{slug:([A-Z]{2}[0-9]{5})+}',['controller' =>'Group','action'=>'page']);
-$router->add('group/page/{slug:[a-zA-Z0-9-\.]+}',['controller' =>'Group','action'=>'page']);
-$router->add('group/bride/{slug:[a-zA-Z0-9-\.]+}',['controller' =>'Group','action'=>'bride']);
-$router->add('group/groom/{slug:[a-zA-Z0-9-\.]+}',['controller' =>'Group','action'=>'groom']);
-$router->add('blog/{slug:[a-zA-Z0-9-\.]+}',['controller' =>'Blog','action'=>'article']);
 $router->dispatch($_SERVER['QUERY_STRING']);
 
 // Match the requested route
