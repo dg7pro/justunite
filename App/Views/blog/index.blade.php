@@ -163,7 +163,7 @@
 
                                 <h2 class="entry-title">
                                     {{--<a href="{{'/blog/article?id='.$blog->id}}">{{$blog->title}}</a>--}}
-                                    <a href="{{'/blog/'.$blog->slug}}">{{$blog->title}}</a>
+                                    <a href="{{'/blog/'.$blog->ln.'/'.$blog->slug}}">{{$blog->title}}</a>
                                 </h2>
 
                                 <div class="entry-meta">

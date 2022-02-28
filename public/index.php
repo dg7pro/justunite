@@ -61,7 +61,8 @@ $router->add('problems', ['controller' =>'Problems','action'=>'index']);
 $router->add('parties', ['controller' =>'Parties','action'=>'index']);
 
 $router->add('blog', ['controller' =>'Blog','action'=>'index']);
-$router->add('blog/{slug:[a-z]+(?:-[a-z]+)*}', ['controller' => 'Blog', 'action' => 'slug']);
+$router->add('blog/{slug:[a-z]+(?:-[a-z]+)*}', ['controller' => 'Blog', 'action' => 'slug-default']);
+$router->add('blog/{lang:([a-z]{2})}/{slug:[a-z]+(?:-[a-z]+)*}', ['controller' => 'Blog', 'action' => 'slug']);
 
 $router->add('{controller}/{action}');
 

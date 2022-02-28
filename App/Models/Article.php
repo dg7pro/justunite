@@ -35,14 +35,14 @@ class Article extends Model
 
     }
 
-    public function fetchFromSlug($slug){
+    public function fetchFromSlug($slug,$ln){
 
         $sql = "SELECT articles.*, users.full_name as writer, users.*, abouts.content as about
                     FROM articles LEFT JOIN users ON articles.user_id=users.id 
-                    LEFT JOIN abouts  ON users.id=abouts.user_id AND abouts.lang=articles.lang WHERE articles.slug=?";
+                    LEFT JOIN abouts  ON users.id=abouts.user_id AND abouts.lang=articles.lang WHERE articles.slug=? AND articles.ln=?";
         $pdo=Model::getDB();
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$slug]);
+        $stmt->execute([$slug,$ln]);
 
         return  $stmt->fetch(PDO::FETCH_OBJ);
 

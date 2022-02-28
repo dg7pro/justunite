@@ -43,16 +43,28 @@ class Blog extends Controller
     public function slugAction()
     {
         $slug = $this->route_params['slug'];
+        $ln = $this->route_params['lang'];
         //$lang = $_COOKIE['ju_user_lang'] ?? 'english';
 
         $blog = new BlogAlias();
-        $blog = $blog->fetchFromSlug($slug);
+        $blog = $blog->fetchFromSlug($slug,$ln);
 
         if(!$blog){
             throw new Exception('Sorry the blog post with this name not found.', 404);
         }
 
         View::renderBlade('blog/single',['blog'=>$blog]);
+
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function slugDefaultAction()
+    {
+
+        $slug = $this->route_params['slug'];
+        $this->redirect('/blog/en/'.$slug);
 
     }
 

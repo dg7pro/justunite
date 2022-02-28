@@ -2,6 +2,13 @@
 
 @section('content')
 
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=131336294384114&autoLogAppEvents=1"
+            nonce="RjCD1v7w">
+    </script>
+
     <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
@@ -81,6 +88,12 @@
 
                     </div><!-- End blog entries list -->
 
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="fb-comments" data-href="{{'https://www.justunite.org/blog/'.$blog->ln.'/'.$blog->slug}}" data-width="500" data-numposts="5"></div>
+                    </div>
                 </div>
 
             </div>
