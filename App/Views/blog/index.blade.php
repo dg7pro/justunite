@@ -179,7 +179,7 @@
                                         {!! $blog->first_para !!}
                                     </p>
                                     <div class="read-more">
-                                        <a href="{{'/blog/article?id='.$blog->id}}">{{$temple['readmore']}}</a>
+                                        <a href="{{'/blog/'.$blog->ln.'/'.$blog->slug}}">{{$temple['readmore']}}</a>
                                     </div>
                                 </div>
                             </article>

@@ -31,7 +31,7 @@
                     <h4>{{$temple['links']}}</h4>
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{'/#hero'}}">{{$temple['home']}}</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{{'/about'}}">{{$temple['about']}}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{'/#about'}}">{{$temple['about']}}</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{'/#problems'}}">{{$temple['problems']}}</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="javascript:void(0)">{{$temple['tos']}}</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="javascript:void(0)">{{$temple['pp']}}</a></li>

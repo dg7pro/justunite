@@ -44,8 +44,13 @@
                 <li><a class="nav-link" href="{{'/#team'}}">{{$temple['team']}}</a></li>
                 <li><a class="nav-link" href="{{'/#members'}}">{{$temple['members']}}</a></li>
                 <li><a class="nav-link" href="{{'/blog'}}">{{$temple['blog']}}</a></li>
-                <li><a class="nav-link" href="{{'/home/donate'}}">{{$temple['donate']}}</a></li>
-                <li><a class="nav-link" href="{{'/#contact'}}">{{$temple['contact']}}</a></li>
+                <li><a class="nav-link" href="{{'/donate'}}">{{$temple['donate']}}</a></li>
+                {{--<li><a class="nav-link" href="{{'/#contact'}}">{{$temple['contact']}}</a></li>--}}
+                @if($authUser)
+                    <li><a class="nav-link" href="{{'/logout'}}">{{$temple['logout']}}</a></li>
+                @else
+                    <li><a class="nav-link" href="{{'/login'}}">{{$temple['login']}}</a></li>
+                @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

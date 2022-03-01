@@ -15,6 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    @yield('og')
+
     <title>Just Unite</title>
     <meta content="The official website of Just Unite Foundation" name="description">
     <meta content="Just unite, India, Hindu, Bharat, Jai Hind" name="keywords">

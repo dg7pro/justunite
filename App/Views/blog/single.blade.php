@@ -1,5 +1,17 @@
 @extends('layouts.inner')
 
+@section('og')
+
+    <meta property="fb:app_id" content="{{'131336294384114'}}" />
+    {{--<meta property="fb:admins" content="nidhimishra2005" />--}}
+
+    <meta property="og:url" content="{{'https://www.justunite.org/blog/'.$blog->ln.'/'.$blog->slug}}" />
+    <meta property="og:title" content="{{$blog->title}}" />
+    <meta property="og:description" content="DESC" />
+    <meta property="og:image" content="{{'https://www.justunite.org/assets/img/blog/'.$blog->image}}" />
+
+@endsection
+
 @section('content')
 
 
@@ -17,7 +29,7 @@
 
                 <ol>
                     <li><a href="{{'/'}}">Home</a></li>
-                    <li><a href="{{'/blog/index'}}">Blog</a></li>
+                    <li><a href="{{'/blog'}}">Blog</a></li>
                 </ol>
                 <h2>{{$blog->title}}</h2>
 
@@ -46,7 +58,7 @@
                                 <ul>
                                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="javascript:void(0)">{{$blog->writer}}</a></li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="javascript:void(0)"><time datetime="2020-01-01">{{$blog->dated}}</time></a></li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>
+                                   {{--<li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="javascript:void(0)">{{$blog->comments}} Comments</a></li>--}}
                                 </ul>
                             </div>
 
@@ -92,7 +104,7 @@
 
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="fb-comments" data-href="{{'https://www.justunite.org/blog/'.$blog->ln.'/'.$blog->slug}}" data-width="500" data-numposts="5"></div>
+                        <div class="fb-comments" data-href="{{'https://www.justunite.org/blog/'.$blog->ln.'/'.$blog->slug}}" data-colorscheme="dark" data-mobile="true" data-width="500" data-numposts="5"></div>
                     </div>
                 </div>
 
